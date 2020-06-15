@@ -1,30 +1,27 @@
 pipeline {
     agent any 
 
-    stage('Build image') {
+    stages {
+
+            stage('Build image') {
   
-      
+            
   
-    stage('Build image') {
-        app = docker.build("celcin/compile")
-    }
-    stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-        }
-    }
+             stage('Build image') {
+                    app = docker.build("celcin/compile")
+                 }
+             stage('Push image') {
+        
+                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                app.push("${env.BUILD_NUMBER}")
+                app.push("latest")
+             }
+            }
 
+         }
 
-
-    }
-
-
- 
+     }
+    
 }
 
 
