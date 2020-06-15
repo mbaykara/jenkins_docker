@@ -8,7 +8,7 @@ node {
         app = docker.build("runtime-tooling")
     }
     stage('Push image') {
-        docker.withRegistry('http://nat01.encowayhb.lokal:8081/repository/docker/', 'nexus') {
+        docker.withRegistry('http://nat01.encowayhb.lokal:8081', 'nexus') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
