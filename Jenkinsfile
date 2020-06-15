@@ -1,5 +1,5 @@
 node {
-    def mosaiq-app
+    def app
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -11,13 +11,13 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        mosaiq-app = docker.build("celcin/compile")
+        app = docker.build("celcin/compile")
     }
 
     stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            mosaiq-app.push("${env.BUILD_NUMBER}")
-            mosaiq-app.push("latest")
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
         }
     }
 }
