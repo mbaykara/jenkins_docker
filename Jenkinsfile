@@ -5,7 +5,7 @@ node {
     }
     stage('Build image') {
 
-        app = docker.build("celcin/compile")
+        app = docker.build("runtime-tooling")
     }
     stage('Push image') {
         docker.withRegistry('http://nat01.encowayhb.lokal:8081/repository/docker/', 'nexus') {
