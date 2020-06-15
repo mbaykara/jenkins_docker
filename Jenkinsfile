@@ -1,4 +1,8 @@
-node {
+pipeline {
+    agent {
+
+
+      node {
   
     stage('Build image') {
         app = docker.build("celcin/compile")
@@ -14,3 +18,11 @@ node {
         }
     }
 }
+
+
+    }
+
+
+}
+
+
