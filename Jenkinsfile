@@ -1,8 +1,9 @@
 pipeline {
     agent {
 
-
-      node {
+    stage('Build image') {
+  
+      
   
     stage('Build image') {
         app = docker.build("celcin/compile")
@@ -17,7 +18,7 @@ pipeline {
             app.push("latest")
         }
     }
-}
+
 
 
     }
