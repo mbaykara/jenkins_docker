@@ -1,11 +1,13 @@
 pipeline {
     agent any 
 
-    
-        stage('Docker stage')
+    stages
+    {
+       stage('Docker stage')
             {
-               
-                stage('Build image')
+               parallel
+               {
+                                    stage('Build image')
                 {
                     app = docker.build("celcin/compile")
                 }
@@ -19,9 +21,12 @@ pipeline {
                         }
                 }
 
+               }
+
+
             }
 
-    
+    }
     
 }
 
