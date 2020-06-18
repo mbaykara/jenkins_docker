@@ -1,18 +1,16 @@
-node () {
-    def app
-    stage('Clone repository') {
-        checkout scm
-    }
-    stage('Build image') {
+pipeline {
+    agent any
 
-        app = docker.build("runtime-development-tools")
-        echo "${env.BRANCH_NAME}"
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
     }
-    stage('Push image') {
-        if(${BRANCH_NAME} == "master"){
-          echo "Hello master"
-      
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'printenv'
+            }
         }
-      }
     }
-
+}
