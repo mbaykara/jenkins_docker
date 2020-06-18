@@ -1,49 +1,19 @@
-
 pipeline {
-
-  agent any 
-
-  stages {
-            stage('Release') {
-          steps{
-            if (env.BRANCH_NAME == 'master') {
-            echo "Hello master"
-            //docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
-            //app.push("${env.BUILD_NUMBER}")
-            //app.push("latest")
-          }
-
-          }
-     
+    agent any
+    stages {
+        stage('Example Build') {
+            steps {
+                echo 'Hello World'
+            }
         }
-
-
-
-
-      
-      post {
-        failure {
-          echo 'This build has failed. See logs for details.'
+        stage('Example Deploy') {
+            when {
+                branch 'master'
+                echo "Hello master"
+            }
+            steps {
+                echo 'Deploying'
+            }
         }
-      }
-    
-
-    stage('Deploy Conan Packages') {
-      parallel {
-
-
-        stage('Deploy Conan Package') {
-          steps {
-
-            sh " echo Building conan package..."
-
-          }
-          environment {
-            CONAN_USER_HOME = "/tmp/build-release"
-
-          }
-        }
-      }
     }
-  }
 }
