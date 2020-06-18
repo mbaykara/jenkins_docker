@@ -4,7 +4,7 @@ pipeline {
         stage('Example Build') {
             steps {
                 echo 'Hello World'
-                echo "${branch}"
+                echo "${env.BRANCH_NAME}"
             }
         }
         stage('Example Deploy') {
