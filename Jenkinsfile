@@ -8,14 +8,14 @@ pipeline {
             }
         }
         stage('Example Deploy') {
-            when {
-                branch 'null'
-               
-            }
-            steps {
+          if (env.BRANCH_NAME == "master") {
+              steps {
                 echo "Hello master"
                 echo "${branch}"
             }
+
+          }
+          
         }
     }
 }
