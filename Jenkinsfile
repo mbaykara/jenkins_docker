@@ -8,17 +8,16 @@ pipeline {
     }
 
     stages {
-        stage('Clone repository') {
-        checkout scm
-    }
-    stage('Build image') {
+        
+    //stage('Build image') {
 
         //app = docker.build("runtime-development-tools")
-        echo "${env.BRANCH_NAME}"
-        echo "${env.GIT_BRANCH}"
-    }
+        
+    //}
         stage('Build') {
             steps {
+              echo "${env.BRANCH_NAME}"
+             echo "${env.GIT_BRANCH}"
                 sh 'printenv'
             }
         }
