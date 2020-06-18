@@ -9,7 +9,7 @@ node {
     }
     stage('Push image') {
         //if(env.BRANCH_NAME == 'master'){
-        when {branch 'master'}
+        when {env.BRANCH_NAME == 'master'}
         steps {
 
 docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
