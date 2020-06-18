@@ -9,15 +9,18 @@ pipeline {
       parallel {
 
          stage('Release') {
- 
-             when {
-                 branch 'master'
-             }
-               echo "Hello master"
-                docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
-                app.push("${env.BUILD_NUMBER}")
-                app.push("latest")
+
+              if(env.BRANCH_NAME == 'master'){
+                              echo "Hello master"
+                //docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
+                //app.push("${env.BUILD_NUMBER}")
+                //app.push("latest")
         } 
+   // Deploy steps here
+  }
+ 
+            
+   
 
      }
           post {
