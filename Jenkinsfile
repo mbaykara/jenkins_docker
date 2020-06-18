@@ -9,7 +9,7 @@ node () {
         echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
-        if(BRANCH_NAME == "master"){
+        if(${BRANCH_NAME} == "master"){
           echo "Hello master"
       
         }
