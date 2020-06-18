@@ -1,5 +1,7 @@
 node {
     def app
+    def branchName = getCurrentBranch()
+
     stage('Clone repository') {
         checkout scm
     }
@@ -9,8 +11,8 @@ node {
     }
     stage('Push image') {
         
-        if ( getCurrentBranch() != "master") {
-              echo "Hello not master"
+        if ( branchName == "master") {
+              echo "Hello  master"
               echo "${env.BRANCH_NAME}" 
         } else {
             echo "Hello master"
