@@ -21,7 +21,7 @@ node {
                // app.push("${env.BUILD_NUMBER}")
                // app.push("latest")
                }
-            } else {
+             else {
                 echo "Hello not master"
                 }
 
