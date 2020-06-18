@@ -11,7 +11,7 @@ node {
     }
     stage('Push image') {
         
-        if ( branchName == "master") {
+        if ( "${BRANCH_NAME}" == "master") {
               echo "Hello  master"
               echo "${env.BRANCH_NAME}" 
         } else {
