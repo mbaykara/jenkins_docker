@@ -9,7 +9,7 @@ node () {
         echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
-        if(GIT_BRANCH=="origin/master"){
+        if(${env.GIT_BRANCH}=="origin/master"){
           echo "Hello master"
       
         }
