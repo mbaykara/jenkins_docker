@@ -10,9 +10,6 @@ node {
 
     stage('Push image') {
 
-        when { 
-            branch 'master'
-        }
     steps {
         script { 
             if (env.BRANCH_NAME == "master") {
