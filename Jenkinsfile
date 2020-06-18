@@ -2,10 +2,7 @@
 pipeline {
 agent {
     node {
-        
-    }
-}
-    def app
+        def app
    
 
     stage('Clone repository') {
@@ -30,6 +27,9 @@ agent {
 
 
     }
+    }
+}
+    
 }
 
 
