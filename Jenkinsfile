@@ -8,14 +8,16 @@ pipeline {
             }
         }
         stage('Example Deploy') {
-          if (env.BRANCH_NAME == "master") {
+          
               steps {
+                if (env.BRANCH_NAME == "master") {
                 echo "Hello master"
                 //echo "${branch}"
+                }
             }
 
           }
           
         }
-    }
+    
 }
