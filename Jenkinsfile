@@ -1,10 +1,5 @@
-
-pipeline {
-agent any 
- 
-        def app
-   
-
+node {
+    def app
     stage('Clone repository') {
         checkout scm
     }
@@ -14,20 +9,18 @@ agent any
     }
     stage('Push image') {
         
-        if ( ${env.BRANCH_NAME} == "master") {
-              echo "Hello  master"
-              echo "${env.BRANCH_NAME}" 
+        if (env.BRANCH_NAME == "master") {
+              echo "Hello master"
+            docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
+                app.push("${env.BUILD_NUMBER}")
+                app.push("latest")
+            }
         } else {
-            echo "Hello not master"
-           // docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
-           //     app.push("${env.BUILD_NUMBER}")
-           //     app.push("latest")
-       //}
+            echo "Hello"
         }
 
 
     }
-    
 }
 
 
