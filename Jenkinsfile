@@ -1,8 +1,7 @@
 
 pipeline {
-agent {
-    node {
-        label ''
+agent any 
+ 
         def app
    
 
@@ -28,8 +27,6 @@ agent {
 
 
     }
-    }
-}
     
 }
 
