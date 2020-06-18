@@ -1,27 +1,32 @@
-pipeline {
-    agent any
-    stages {
-        stage('Example Build') {
-            steps {
-                echo 'Hello World'
-                echo "${env.BRANCH_NAME}"
-            }
-        }
-        stage('Example Deploy') {
-          
-           when {
-                // Only say hello if a "greeting" is requested
-                expression {env.BRANCH_NAME == 'null' }
-            }
-              steps {
-                
-                echo "Hello master"
-                //echo "${branch}"
-                
-            }
+node {
+    def app
+    stage('Clone repository') {
+        checkout scm
+    }
+    stage('Build image') {
 
-          }
-          
+        app = docker.build("runtime-development-test")
+    }
+
+    stage('Push image') {
+
+        when { 
+            branch 'master'
         }
-    
+    steps {
+        script { 
+            if (env.BRANCH_NAME == "master") {
+                echo "Hello master"
+               // docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
+               // app.push("${env.BUILD_NUMBER}")
+               // app.push("latest")
+               }
+            } else {
+                echo "Hello not master"
+                }
+
+        }
+    }
 }
+}
+
