@@ -1,6 +1,6 @@
 node {
     def app
-    def branchName = getCurrentBranch();
+   
 
     stage('Clone repository') {
         checkout scm
