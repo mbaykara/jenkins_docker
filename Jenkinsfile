@@ -1,4 +1,7 @@
-node {
+
+pipeline {
+    agent any{}
+  {
     def app
    
 
@@ -11,15 +14,15 @@ node {
     }
     stage('Push image') {
         
-        if ( "${env.BRANCH_NAME}" == "master") {
+        if ( ${env.BRANCH_NAME} == "master") {
               echo "Hello  master"
               echo "${env.BRANCH_NAME}" 
         } else {
             echo "Hello not master"
-            docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
-                app.push("${env.BUILD_NUMBER}")
-                app.push("latest")
-            }
+           // docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
+           //     app.push("${env.BUILD_NUMBER}")
+           //     app.push("latest")
+       //}
         }
 
 
@@ -27,4 +30,4 @@ node {
 }
 
 
-
+}
