@@ -11,6 +11,7 @@ node {
         
         if (env.BRANCH_NAME != "master") {
               echo "Hello not master"
+              echo "${env.BRANCH_NAME}" 
         } else {
             echo "Hello master"
             docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'nexus') {
