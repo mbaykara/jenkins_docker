@@ -4,10 +4,7 @@ pipeline {
   agent any 
 
   stages {
-    stage('QA') {
-      parallel {
-
-        stage('Release') {
+            stage('Release') {
           steps{
             if (env.BRANCH_NAME == 'master') {
             echo "Hello master"
@@ -23,13 +20,13 @@ pipeline {
 
 
 
-      }
+      
       post {
         failure {
           echo 'This build has failed. See logs for details.'
         }
       }
-    }
+    
 
     stage('Deploy Conan Packages') {
       parallel {
