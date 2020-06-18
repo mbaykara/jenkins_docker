@@ -1,16 +1,18 @@
-pipeline {
-    agent any
-
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
+node () {
+    def app
+    stage('Clone repository') {
+        checkout scm
     }
+    stage('Build image') {
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'printenv'
-            }
+        app = docker.build("runtime-development-tools")
+        echo "${env.BRANCH_NAME}"
+    }
+    stage('Push image') {
+        if(env.GIT_BRANCH=="origin/master"){
+          echo "Hello master"
+      
         }
+      }
     }
-}
+
