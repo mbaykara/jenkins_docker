@@ -9,7 +9,7 @@ node {
     }
     stage('Push image') {
         
-        if (env.BRANCH_NAME != "master") {
+        if ( getCurrentBranch() != "master") {
               echo "Hello not master"
               echo "${env.BRANCH_NAME}" 
         } else {
