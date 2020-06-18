@@ -11,7 +11,7 @@ pipeline {
           if (env.BRANCH_NAME == "master") {
               steps {
                 echo "Hello master"
-                echo "${branch}"
+                //echo "${branch}"
             }
 
           }
