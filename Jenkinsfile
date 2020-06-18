@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Example Deploy') {
             when {
-                branch 'master'
+                branch 'null'
                
             }
             steps {
