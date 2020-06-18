@@ -9,11 +9,15 @@ pipeline {
         }
         stage('Example Deploy') {
           
+           when {
+                // Only say hello if a "greeting" is requested
+                expression {env.BRANCH_NAME == 'master' }
+            }
               steps {
-                if (env.BRANCH_NAME == "master") {
+                
                 echo "Hello master"
                 //echo "${branch}"
-                }
+                
             }
 
           }
