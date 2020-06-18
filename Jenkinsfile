@@ -9,7 +9,7 @@ node {
     }
     stage('Push image') {
       
-        docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'ne2xus') {
+           docker.withRegistry('http://nat01.encowayhb.lokal:5001', 'docker') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
