@@ -5,10 +5,10 @@ node {
     }
     stage('Build image') {
 
-        app = docker.build("runtime-tooling")
+        app = docker.build("runtime-development-tools")
     }
     stage('Push image') {
-        docker.withRegistry('http://192.168.1.221:8082', 'nexus') {
+        docker.withRegistry('http://nat01.encowayhb.lokal:8081', 'nexus') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
