@@ -6,6 +6,7 @@ node () {
     stage('Build image') {
 
         app = docker.build("runtime-development-tools")
+        echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
         if(env.BRANCH_NAME == "master"){
