@@ -11,7 +11,7 @@ pipeline {
           
            when {
                 // Only say hello if a "greeting" is requested
-                expression {env.BRANCH_NAME == 'master' }
+                expression {env.BRANCH_NAME == 'null' }
             }
               steps {
                 
