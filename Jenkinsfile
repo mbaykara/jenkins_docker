@@ -1,7 +1,10 @@
 
 pipeline {
-    agent any{}
-  {
+  agent {
+
+
+      any
+  }
     def app
    
 
