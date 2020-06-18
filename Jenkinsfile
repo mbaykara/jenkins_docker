@@ -13,6 +13,7 @@ pipeline {
             }
             steps {
                 echo "Hello master"
+                echo "${branch}"
             }
         }
     }
