@@ -10,7 +10,7 @@ node  {
          app = docker.build("runtime-development-tools")
          echo "${env.GIT_BRANCH}"
          echo "${env.BRANCH_NAME}"
-         def externalMethod = evaluate readFile("master.groovy")
+        def externalMethod = load("master.groovy")
     }
     stage('Push image') {
        
