@@ -14,7 +14,7 @@ node  {
        def externalMethod = load("master.groovy")
       }
     }
-}
+
  
 
 
