@@ -1,4 +1,4 @@
-/* 
+ 
 node  {
     def app
     stage('Clone repository') {
@@ -6,21 +6,20 @@ node  {
     }
     stage('Build image') {
 
+         app = docker.build("runtime-development-tools")
         echo "${env.GIT_BRANCH}"
          echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
-        if(env.GIT_BRANCH == "master"){
-        
-        }
+       def externalMethod = load("master.groovy")
       }
     }
 }
- */
+ 
 
 
 
-
+/*
 pipeline {
     agent any
 
