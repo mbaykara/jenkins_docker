@@ -12,7 +12,7 @@ node  {
          echo "${env.BRANCH_NAME}"
 
          def rootDir = pwd()
-         def example = load "${rootDir}@script/master.groovy "
+         def example = load "${rootDir}@/master.groovy "
         example.call()
     
          
