@@ -35,15 +35,15 @@ pipeline {
 
         stage('Build')
         {
-            /* steps
+             steps
             {
                 echo "${env.GIT_BRANCH}"
                 // if("${env.GIT_BRANCH}" == 'origin/master' ){
                 //    echo "Hello master"
                 //}
-            } */
+            } 
 
-            echo "${env.GIT_BRANCH}"
+            //echo "${env.GIT_BRANCH}"
             when{
                 branch 'origin/master'
             }
