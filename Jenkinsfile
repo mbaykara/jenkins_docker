@@ -8,7 +8,7 @@ node  {
 
         app = docker.build("runtime-development-tools")
          echo "${env.GIT_BRANCH}"
-          echo "${env.BRANCH_NAME}"
+         echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
         if(env.GIT_BRANCH == "master"){
@@ -19,10 +19,10 @@ node  {
       }
     }
 }
-
-
-
  */
+
+
+
 
 pipeline {
     agent any
@@ -33,12 +33,6 @@ pipeline {
 
     stages {
 
-        stage('Build image') 
-        {
-            echo "${env.BRANCH_NAME}"
-            //app = docker.build("runtime-development-tools")
-
-        }
         stage('Build') 
         {
             steps 
@@ -49,4 +43,3 @@ pipeline {
         }
     }
 }
- 
