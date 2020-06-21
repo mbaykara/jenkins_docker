@@ -6,15 +6,12 @@ node  {
     }
     stage('Build image') {
 
-        app = docker.build("runtime-development-tools")
-         echo "${env.GIT_BRANCH}"
+        echo "${env.GIT_BRANCH}"
          echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
         if(env.GIT_BRANCH == "master"){
-        docker.withRegistry('http://172.17.0.2:8123', 'nexus') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+        
         }
       }
     }
@@ -33,34 +30,37 @@ pipeline {
 
     stages {
 
-        stage('master-branch-stuff')
-        {
-            agent any
-                when{
-                  branch 'origin/master'
-                    }
-                steps {
-                    echo 'run this stage - ony if the branch = master branch'
-                     }
-        }
-
- /*        stage('Build')
-        {
-             steps
-            {
-                echo "${env.GIT_BRANCH}"
-                // if("${env.GIT_BRANCH}" == 'origin/master' ){
-                //    echo "Hello master"
-                //}
-            } 
-
-            //echo "${env.GIT_BRANCH}"
-            when{
-                branch 'origin/master'
+        stage('expression-branch') {
+            agent label: 'some-node'
+            when {
+                expression {
+                    return env.BRANCH_NAME != 'master';
+                }
             }
             steps {
-                echo 'run this stage - ony if the branch = master branch'
+                echo 'run this stage - when branch is not equal to master'
             }
-        } */
+        }
+
     }
 }
+
+
+/*        stage('Build')
+       {
+            steps
+           {
+               echo "${env.GIT_BRANCH}"
+               // if("${env.GIT_BRANCH}" == 'origin/master' ){
+               //    echo "Hello master"
+               //}
+           }
+
+           //echo "${env.GIT_BRANCH}"
+           when{
+               branch 'origin/master'
+           }
+           steps {
+               echo 'run this stage - ony if the branch = master branch'
+           }
+       } */
