@@ -8,11 +8,12 @@ node  {
     stage('Build image') {
 
          app = docker.build("runtime-development-tools")
-        echo "${env.GIT_BRANCH}"
+         echo "${env.GIT_BRANCH}"
          echo "${env.BRANCH_NAME}"
+         def externalMethod = evaluate readFile("master.groovy")
     }
     stage('Push image') {
-       def externalMethod = evaluate readFile("master.groovy")
+       
 
 
       }
