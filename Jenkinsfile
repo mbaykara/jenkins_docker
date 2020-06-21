@@ -37,7 +37,7 @@ pipeline {
         {
             agent any
                 when{
-                  branch 'master'
+                  branch 'origin/master'
                     }
                 steps {
                     echo 'run this stage - ony if the branch = master branch'
