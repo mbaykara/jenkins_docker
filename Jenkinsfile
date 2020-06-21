@@ -1,4 +1,4 @@
- 
+/*  
 node  {
     def app
     stage('Clone repository') {
@@ -22,9 +22,25 @@ node  {
 
 
       }
-    }
+    } */
 
  
+
+
+node {
+    // Git checkout before load source the file
+    checkout scm
+
+
+    def rootDir = pwd()
+    println("Current Directory: " + rootDir)
+
+    // point to exact source file
+     def example = load "${rootDir}/master.groovy"
+             example.call()
+}
+
+
 
 
 
