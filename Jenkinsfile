@@ -33,14 +33,22 @@ pipeline {
 
     stages {
 
-        stage('Build') 
+        stage('Build')
         {
-            steps 
+            /* steps
             {
                 echo "${env.GIT_BRANCH}"
-               // if("${env.GIT_BRANCH}" == 'origin/master' ){
-               //    echo "Hello master"
+                // if("${env.GIT_BRANCH}" == 'origin/master' ){
+                //    echo "Hello master"
                 //}
+            } */
+
+
+            when{
+                branch 'origin/master'
+            }
+            steps {
+                echo 'run this stage - ony if the branch = master branch'
             }
         }
     }
