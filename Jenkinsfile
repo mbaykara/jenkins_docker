@@ -34,7 +34,7 @@ pipeline {
             agent any
             when {
                 expression {
-                    return env.BRANCH_NAME != 'master';
+                    return env.BRANCH_NAME == 'master';
                 }
             }
             steps {
