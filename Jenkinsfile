@@ -14,11 +14,11 @@ node  {
     stage('Push image') {
        
   if(env.BRANCH_NAME == "master"){
-       // withCredentials([string(credentialsId: 'DOCKER_REPOSITORY_URL', variable: 'DOCKER_REPOSITORY_URL')]) {
-            docker.withRegistry("${DOCKER_REPOSITORY_URL}", 'nexus') {
+       
+            docker.withRegistry(http://172.17.0.2:8123, 'nexus') {
                 image.push("${env.BUILD_NUMBER}")
                 image.push("latest")
-            }
+            
         
     }
 
