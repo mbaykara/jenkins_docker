@@ -37,8 +37,8 @@ pipeline {
         {
             steps 
             {
-               
-                if("${env.GIT_BRANCH}") == origin/master ){
+               echo "${env.GIT_BRANCH}"
+                if(env.GIT_BRANCH) == origin/master ){
                     echo "Hello master"
                 }
             }
