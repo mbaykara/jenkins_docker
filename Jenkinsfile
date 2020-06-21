@@ -8,6 +8,7 @@ node  {
 
         app = docker.build("runtime-development-tools")
          echo "${env.GIT_BRANCH}"
+          echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
         if(env.GIT_BRANCH == "master"){
