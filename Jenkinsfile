@@ -3,6 +3,7 @@ node  {
     def app
     stage('Clone repository') {
         checkout scm
+         echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
     }
     stage('Build image') {
 
@@ -11,7 +12,9 @@ node  {
          echo "${env.BRANCH_NAME}"
     }
     stage('Push image') {
-       def externalMethod = load("master.groovy")
+       def externalMethod = evaluate readFile("master.groovy")
+
+
       }
     }
 
@@ -44,22 +47,4 @@ pipeline {
     }
 }
 
-
-/*        stage('Build')
-       {
-            steps
-           {
-               echo "${env.GIT_BRANCH}"
-               // if("${env.GIT_BRANCH}" == 'origin/master' ){
-               //    echo "Hello master"
-               //}
-           }
-
-           //echo "${env.GIT_BRANCH}"
-           when{
-               branch 'origin/master'
-           }
-           steps {
-               echo 'run this stage - ony if the branch = master branch'
-           }
-       } */
+*/
