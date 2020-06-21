@@ -43,7 +43,7 @@ pipeline {
                 //}
             } */
 
-
+            echo "${env.GIT_BRANCH}"
             when{
                 branch 'origin/master'
             }
