@@ -31,7 +31,7 @@ pipeline {
     stages {
 
         stage('expression-branch') {
-            agent label: 'some-node'
+            agent any
             when {
                 expression {
                     return env.BRANCH_NAME != 'master';
