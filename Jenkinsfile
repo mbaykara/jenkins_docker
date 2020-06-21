@@ -3,7 +3,7 @@ node  {
     def app
     stage('Clone repository') {
         checkout scm
-         echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
+         echo " ${env.BRANCH_NAME}"
     }
     stage('Build image') {
 
