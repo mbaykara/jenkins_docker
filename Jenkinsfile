@@ -1,4 +1,4 @@
-
+/* 
 node  {
     def app
     stage('Clone repository') {
@@ -22,8 +22,8 @@ node  {
 
 
 
+ */
 
-/* 
 pipeline {
     agent any
 
@@ -49,4 +49,4 @@ pipeline {
         }
     }
 }
- */
+ 
