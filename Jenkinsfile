@@ -5,11 +5,11 @@ node () {
     }
     stage('Build image') {
 
-        app = docker.build("runtime-development-tools", "./Dockerfiles/runtime-tooling.dockerfile")
+        app = docker.build("celcin/runtime-development-tools", "./Dockerfiles/runtime-tooling.dockerfile")
     }
     stage('Push image') {
         if(env.BRANCH_NAME == "master"){
-        docker.withRegistry('http://172.17.0.2:8080', 'mehmet') {
+        docker.withRegistry('https://registry-1.docker.io/v2/', 'mehmet') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
