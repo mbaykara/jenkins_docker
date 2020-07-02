@@ -9,7 +9,7 @@ node () {
     }
     stage('Push image') {
         if(env.BRANCH_NAME == "master"){
-        docker.withRegistry('https://registry-1.docker.io/v2/', 'mehmet') {
+        docker.withRegistry('https://registry-1.docker.io/v2/', 'celcin') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
