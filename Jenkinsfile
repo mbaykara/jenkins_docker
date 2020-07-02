@@ -9,7 +9,7 @@ node () {
     }
     stage('Push image') {
         if(env.BRANCH_NAME == "master"){
-        docker.withRegistry('http://172.17.0.2:8080', 'dockerUser') {
+        docker.withRegistry('http://172.17.0.2:8080', 'mehmet') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
