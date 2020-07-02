@@ -5,7 +5,7 @@ node () {
     }
     stage('Build image') {
 
-        app = docker.build("celcin/runtime-development-tools", "./Dockerfiles/runtime-tooling.dockerfile")
+        app = docker.build("celcin/runtime-development-tools", "./Dockerfiles/mehmet.dockerfile")
     }
     stage('Push image') {
         if(env.BRANCH_NAME == "master"){
