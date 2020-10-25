@@ -14,12 +14,13 @@ node() {
         docker.image(dockerImage).inside(dockerArgs) {
          
           //sh "cd /tmp/build-release && ${devEnv} cmake -DCMAKE_BUILD_TYPE=Release ${WORKSPACE}/runtime && ${devEnv} cmake --build . && ${devEnv} cmake --build . && ctest --output-on-failure"
-          sh "#!/bin/bash  mkdir -p /tmp/build-release && cd /tmp/build-release && echo 'test' >> t.txt "
+          sh "#!/bin/bash  echo 'Hello' "
+          //sh "#!/bin/bash  mkdir -p /tmp/build-release && cd /tmp/build-release && echo 'test' >> t.txt "
         }
       },
       'Complexity': {
         docker.image(dockerImage).inside(dockerArgs) {
-         sh "#!/bin/bash  cd /tmp/build-release && cat t.txt"
+         //sh "#!/bin/bash  cd /tmp/build-release && cat t.txt"
           
           //sh "cd /tmp/build-complexity && ${devEnv} cmake -DCMAKE_BUILD_TYPE=Release ${WORKSPACE}/runtime && ${devEnv} cmake --build . --target complexity"
         }
