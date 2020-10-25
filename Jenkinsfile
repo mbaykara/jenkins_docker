@@ -14,7 +14,7 @@ node() {
         docker.image(dockerImage).inside(dockerArgs) {
          
           //sh "cd /tmp/build-release && ${devEnv} cmake -DCMAKE_BUILD_TYPE=Release ${WORKSPACE}/runtime && ${devEnv} cmake --build . && ${devEnv} cmake --build . && ctest --output-on-failure"
-          '''#!/bin/bash
+          sh '''#!/bin/bash
                  echo "hello world" 
          '''
           //sh "#!/bin/bash  mkdir -p /tmp/build-release && cd /tmp/build-release && echo 'test' >> t.txt "
