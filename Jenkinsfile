@@ -12,7 +12,7 @@ node() {
     parallel (
       'Release Build': {
         docker.image(dockerImage).inside(dockerArgs) {
-          sh 'mkdir -p /tmp/build-release'
+         
           //sh "cd /tmp/build-release && ${devEnv} cmake -DCMAKE_BUILD_TYPE=Release ${WORKSPACE}/runtime && ${devEnv} cmake --build . && ${devEnv} cmake --build . && ctest --output-on-failure"
           sh "#!/bin/bash  mkdir -p /tmp/build-release && cd /tmp/build-release && echo 'test' >> t.txt "
         }
