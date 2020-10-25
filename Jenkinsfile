@@ -4,7 +4,7 @@ node() {
   //def app
   checkout scm
 
-  def String dockerImage = 'https://hub.docker.com/repository/docker/celcin/runtime-tool'
+  def String dockerImage = 'celcin/runtime-tool'
   def String dockerArgs = '' 
   //def String devEnv = 'CONAN_USER_HOME=/tmp/conan/ CONAN_NON_INTERACTIVE=1 CCACHE_DIR=/tmp/ccache/'
   
